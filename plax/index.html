@@ -34,9 +34,9 @@
             model = await tmImage.load(modelURL, metadataURL);
             maxPredictions = model.getTotalClasses();
 
-            const flip = true;
+            const flip = false; // Rear camera doesn't need mirroring
             webcam = new tmImage.Webcam(300, 300, flip);
-            await webcam.setup();
+            await webcam.setup({ facingMode: "environment" }); // Use rear camera
             await webcam.play();
 
             document.getElementById("webcam-container").appendChild(webcam.canvas);
@@ -76,6 +76,7 @@
 
 </body>
 </html>
+
 
 
 
